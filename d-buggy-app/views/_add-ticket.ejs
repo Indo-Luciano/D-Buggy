@@ -1,0 +1,53 @@
+<div class="modal" id="modal">
+  <div class="modal-header">
+    <div class="modal-title">Ticket Submittion Form</div>
+    <button data-close-button class="close-btn">&times;</button>
+  </div>
+  <div class="modal-body">
+    <form class="form" action="/add-ticket" method="POST">
+      <label class="form-label" for="title">Title</label>
+      <div>
+        <input
+          class="title-tb"
+          type="text"
+          id="title"
+          name="title"
+          placeholder="Issue"
+          required
+        />
+      </div>
+      <label class="form-label" for="category">Category</label>
+      <div>
+        <select name="category" id="category" class="form-control" required>
+          <option disabled selected value>Please select category</option>
+          <option value="1">Server</option>
+          <option value="2">Dashboard</option>
+          <option value="3">Account</option>
+          <option value="4">Misc.</option>
+        </select>
+      </div>
+      <label class="form-label" for="priority">Priority</label>
+      <div>
+        <select name="priority" id="priority" class="form-control" required>
+          <option disabled selected value>Please select priority level</option>
+          <option value="1">High</option>
+          <option value="2">Moderate</option>
+          <option value="3">low</option>
+        </select>
+      </div>
+      <label class="form-label" for="description">Description</label>
+      <div>
+        <input
+          class="description-tb"
+          type="text"
+          id="description"
+          name="description"
+          placeholder="Please enter a description for the issue..."
+          required
+        />
+      </div>
+      <button type="submit" class="submit-btn log-btn">Submit</button>
+    </form>
+  </div>
+</div>
+<div id="overlay"></div>

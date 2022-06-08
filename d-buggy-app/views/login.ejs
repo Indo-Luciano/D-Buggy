@@ -1,0 +1,25 @@
+<%- include('_head') %>
+
+<div class="login-register-container">
+  <h1>Login</h1>
+  <% if (messages.error) { %> <%= messages.error %> <% } %>
+  <form action="/login" method="POST">
+    <div class="log-div">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required />
+    </div>
+    <div class="log-div">
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" required />
+    </div>
+    <div class="log-div">
+      <button type="submit" class="log-btn">Login</button>
+    </div>
+  </form>
+  <div class="log-div">
+    <button type="submit" class="log-btn" onclick="demoLogin()">
+      Login as demo user
+    </button>
+  </div>
+  <a href="/register">Register</a>
+</div>

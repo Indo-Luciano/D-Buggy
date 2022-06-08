@@ -1,0 +1,6 @@
+.env
+node_modules
+pages
+index.html
+components
+MySQL_files
