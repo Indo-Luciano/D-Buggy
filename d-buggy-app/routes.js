@@ -199,7 +199,7 @@ router.use("/tickets", ticketRouter);
 // TODO FIX
 router.get("/", checkAuthenticated, async (req, res) => {
   const tickets = await getAllTickets();
-  console.log(tickets);
+  // console.log(tickets);
   res.render("index", { tickets: tickets[0] });
 });
 

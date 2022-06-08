@@ -4,3 +4,4 @@ pages
 index.html
 components
 MySQL_files
+database.js
