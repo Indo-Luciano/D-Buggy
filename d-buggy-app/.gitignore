@@ -3,5 +3,5 @@ node_modules
 pages
 index.html
 components
-MySQL_files
 database.js
+models
