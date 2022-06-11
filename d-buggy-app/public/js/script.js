@@ -50,3 +50,20 @@ function closeModal(modal) {
   overlay.classList.remove("active");
 }
 // -------------------------------------------------- MODAL END
+
+document.getElementById("priority1").innerHTML = "signal_cellular_1_bar";
+
+document.getElementById("priority2").innerHTML = "signal_cellular_3_bar";
+
+document.getElementById("priority3").innerHTML = "signal_cellular_4_bar";
+
+// let string = document.getElementsByTagName("span").innerHTML;
+
+// let priority1 = string.replace("1", "signal_cellular_1_bar");
+// document.getElementsByTagName("span").innerHTML = priority1;
+
+// let priority2 = string.replace("2", "signal_cellular_3_bar");
+// document.getElementsByTagName("span").innerHTML = priority1;
+
+// let priority3 = string.replace("3", "signal_cellular_4_bar");
+// document.getElementsByTagName("span").innerHTML = priority1;

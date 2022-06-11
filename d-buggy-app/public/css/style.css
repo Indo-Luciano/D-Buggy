@@ -1,4 +1,9 @@
 :root {
+  --color-primary: #dddddd;
+  --color-primary-dark: #6e7b84;
+  --color-secondary: #f5f5f5;
+  --color-alternative: #75afff;
+  --color-primary-text: #1d140b;
   --font-family-normal: articulat-cf, sans-serif;
   --font-weight-normal: 400;
   --font-style-normal: normal;
@@ -12,6 +17,10 @@
   --font-weight-bold: 900;
   --font-style-bold: normal;
 }
+
+/* #777
+#333
+#f3f0e9 */
 
 * {
   margin: 0;
@@ -28,7 +37,7 @@ body {
   min-height: 100vh;
   width: 100%;
   overflow: hidden;
-  background: #333;
+  background: var(--color-primary);
 }
 
 /* sidebar */
@@ -38,7 +47,7 @@ body {
   left: 0;
   height: 100%;
   width: 78px;
-  background: #777;
+  background: var(--color-primary-dark);
   padding: 6px 14px;
   transition: all 0.5s ease;
 }
@@ -48,7 +57,7 @@ body {
 }
 
 .sidebar .logo_content .logo {
-  color: #f3f0e9;
+  color: var(--color-secondary);
   display: flex;
   height: 50px;
   width: 100%;
@@ -75,7 +84,7 @@ body {
 
 .sidebar #btn {
   position: absolute;
-  color: #f3f0e9;
+  color: var(--color-secondary);
   top: 6px;
   left: 50%;
   font-size: 20px;
@@ -116,7 +125,7 @@ body {
   border-radius: 7px;
   height: 35px;
   width: 122px;
-  background: #f3f0e9;
+  background: var(--color-secondary);
   line-height: 35px;
   text-align: center;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
@@ -145,27 +154,27 @@ body {
   border-radius: 15px;
   outline: none;
   border: none;
-  background: #333;
+  background: var(--color-secondary);
   padding-left: 50px;
   font-size: 18px;
-  color: #f3f0e9;
+  color: var(--color-primary-text);
 }
 
 .sidebar ul li .fa-magnifying-glass {
   position: absolute;
   z-index: 99;
-  color: #f3f0e9;
+  color: var(--color-primary-dark);
   font-size: 22px;
   transition: all 0.5s ease;
 }
 
 .sidebar ul li .fa-magnifying-glass:hover {
-  background: #f3f0e9;
-  color: #333;
+  background: var(--color-secondary);
+  color: var(--color-primary-text);
 }
 
 .sidebar ul li a {
-  color: #f3f0e9;
+  color: var(--color-secondary);
   display: flex;
   align-items: center;
   text-decoration: none;
@@ -175,8 +184,8 @@ body {
 }
 
 .sidebar ul li a:hover {
-  color: #333;
-  background: #f3f0e9;
+  color: var(--color-primary-text);
+  background: var(--color-secondary);
 }
 
 .sidebar ul li i {
@@ -200,7 +209,7 @@ body {
 
 .sidebar .profile_content {
   position: absolute;
-  color: #333;
+  color: var(--color-primary-text);
   bottom: 0;
   left: 0;
   width: 100%;
@@ -215,7 +224,7 @@ body {
 }
 
 .sidebar.active .profile_content .profile {
-  background: #f3f0e9;
+  background: var(--color-secondary);
 }
 
 .profile_content .profile .profile_details {
@@ -235,7 +244,7 @@ body {
   height: 45px;
   width: 45px;
   object-fit: cover;
-  border: 1px solid #333;
+  border: 1px solid var(--color-primary-text);
   border-radius: 30px;
 }
 
@@ -246,12 +255,12 @@ body {
 .profile .profile_details .name {
   font-size: 15px;
   font-weight: 400;
-  color: #333;
+  color: var(--color-primary-text);
 }
 
 .profile .profile_details .job {
   font-size: 12px;
-  color: #333;
+  color: var(--color-primary-text);
 }
 
 .profile .fa-arrow-right-from-bracket {
@@ -265,21 +274,21 @@ body {
   border-radius: 12px;
   text-align: center;
   transition: all 0.4s ease;
-  background: #333;
-  color: #f3f0e9;
+  background: var(--color-primary-dark);
+  color: var(--color-secondary);
   transition: all 0.5s ease;
 }
 
 .profile .fa-arrow-right-from-bracket:hover {
   cursor: pointer;
-  background: #f3f0e9;
-  color: #333;
+  background: var(--color-secondary);
+  color: var(--color-primary-text);
 }
 
 .sidebar.active .profile .fa-arrow-right-from-bracket {
   left: 88%;
   background: none;
-  color: #333;
+  color: var(--color-primary-text);
 }
 
 .sidebar.active .profile .fa-arrow-right-from-bracket:hover {
@@ -297,7 +306,7 @@ body {
 .home_content .text {
   font-size: 25px;
   font-weight: 500;
-  color: #333;
+  color: var(--color-primary-text);
   margin: 12px;
 }
 
@@ -314,7 +323,7 @@ body {
 
 .name {
   font-size: 1.2rem;
-  color: #f3f0e9;
+  color: var(--color-secondary);
 }
 /* --------------------- TOP END --------------------- */
 
@@ -322,14 +331,14 @@ body {
   /* display: flex; */
   border: none;
   border-radius: 15px;
-  box-shadow: 0 0 20px 2px #f3f0e9;
+  box-shadow: 0 0 20px 2px var(--color-secondary);
   margin-top: 2rem;
   margin-left: 8rem;
   margin-right: 50px;
   padding-top: 0.3rem;
   height: 80%;
-  color: #333;
-  background: #f3f0e9;
+  color: var(--color-primary-text);
+  background: var(--color-secondary);
   transition: all 0.5s ease;
 }
 
@@ -362,8 +371,8 @@ body {
 }
 
 .view:hover {
-  background: #777;
-  color: #f3f0e9;
+  background: var(--color-primary);
+  color: var(--color-secondary);
   border-radius: 5px;
   cursor: pointer;
 }
@@ -376,8 +385,8 @@ body {
 }
 
 .filter:hover {
-  background: #777;
-  color: #f3f0e9;
+  background: var(--color-primary);
+  color: var(--color-secondary);
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.5s ease;
@@ -395,8 +404,8 @@ body {
 }
 
 .add-issue:hover {
-  background: #777;
-  color: #f3f0e9;
+  background: var(--color-primary);
+  color: var(--color-secondary);
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.5s ease;
@@ -453,11 +462,12 @@ body {
   left: 50%;
   transform: translate(-50%, -50%) scale(0);
   transition: all 0.5s ease-in-out;
-  border: 1px solid #333;
-  box-shadow: 0 0 20px 2px #f3f0e9;
+  /* border: 1px solid var(--color-primary-dark); */
+  border: none;
+  box-shadow: 0 0 20px 2px var(--color-secondary);
   border-radius: 15px;
   z-index: 10;
-  background: #f3f0e9;
+  background: var(--color-secondary);
   width: 1200px;
   max-width: 80%;
 }
@@ -471,7 +481,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid var(--color-primary-dark);
 }
 
 .modal-header .title {
@@ -522,8 +532,8 @@ body {
 
 .login-register-container {
   margin: 10% auto;
-  background: #f3f0e9;
-  box-shadow: 0 0 20px 2px #f3f0e9;
+  background: var(--color-secondary);
+  box-shadow: 0 0 20px 2px var(--color-secondary);
   border: none;
   border-radius: 15px;
   width: 500px;
@@ -539,11 +549,11 @@ body {
   border: none;
   border-radius: 5px;
   padding: 0.3rem;
-  background: #333;
-  color: #f3f0e9;
+  background: var(--color-primary-dark);
+  color: var(--color-secondary);
 }
 
 .log-btn:hover {
-  background: #777;
+  background: var(--color-primary);
 }
 /* --------------------- LOGIN-REGISTER END --------------------- */ ;

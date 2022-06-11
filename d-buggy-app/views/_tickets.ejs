@@ -2,10 +2,11 @@
 <li class="issue">
   <div class="date"><%= ticket.date %></div>
   <div class="item">
-    <span class="material-symbols-outlined priority">
-      signal_cellular_1_bar
+    <span
+      id="priority<%= ticket.priority_priority_id %>"
+      class="material-symbols-outlined priority"
+    >
     </span>
-    <%= ticket.priority %>
     <button class="status-btn">
       <span class="material-symbols-outlined status unchecked">
         radio_button_unchecked
