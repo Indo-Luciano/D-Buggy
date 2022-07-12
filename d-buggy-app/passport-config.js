@@ -5,34 +5,17 @@ const bcrypt = require("bcrypt");
 const mysql = require("mysql2");
 const { append } = require("express/lib/response");
 
-// LOOK_HERE ⬇️ Added this to check and verify that the function was correctly hashing and comparing the passwords. compareHash function works correctly
-// function generateHash(password) {
-//   const salt = bcrypt.genSaltSync(10);
-//   const hash = bcrypt.hashSync(password, salt);
-//   return hash;
-// }
-
-// // test
-// console.log(generateHash("password123"));
-
-// function compareHash(password, hashed) {
-//   return bcrypt.compareSync(password, hashed);
-// }
-
-// // comparing test to hashed test
-// console.log(
-//   compareHash(
-//     "password123",
-//     "$2b$10$1jtCQFcpULY48pFIvSMkHOdw0WhE15oHKd9BcKYXyIwgb9bHM4hBe"
-//   )
-// );
-
-// SEPERATE ----------------------------
-
+// Authenticate User
 async function initialize(passport, getUserByEmail) {
   const authenticateUser = async (email, password, done) => {
     const user = await getUserByEmail(email);
     // console.log(user);
+    // if (err) {
+    //   return done(err);
+    // }
+    // if (!user) {
+    //   return done(null, false, { message: "Incorrect email" });
+    // }
     if (user == null) {
       return done(null, false, { message: "No user with that email" });
     }
@@ -45,7 +28,7 @@ async function initialize(passport, getUserByEmail) {
       function compareHash(password, hashed) {
         return bcrypt.compareSync(password, hashed);
       }
-      console.log(compareHash(password, user[0][0].password));
+      // console.log(compareHash(password, user[0][0].password));
       // } else {
       // return done(null, false, { message: "Password Incorrect" });
       // }
@@ -62,26 +45,14 @@ async function initialize(passport, getUserByEmail) {
   passport.serializeUser((user, done) => done(null, user));
   passport.deserializeUser((user, done) => {
     return done(null, user);
-    console.log(user_id);
   });
 }
 
-// Previous code
-// // FIX TODO where is it comparing the passwords???
-// try {
-//   if (
-//     await bcrypt.compare(
-//       password,
-//       con.query("SELECT * FROM users WHERE password = ?", [user.password])
-//     )
-//   ) {
-//     return done(null, user);
-//   } else {
-//     return done(null, false, { message: "Password incorrect" });
-//   }
-// } catch (e) {
-//   return done(e);
-// }
+// const userId = user[0][0].user_id;
+// console.log(userId);
+
+// sessionStorage.setItem("user id", user[0][0].user_id);
+// console.log(sessionStorage.getItem("user id"));
 
 module.exports = initialize;
 

@@ -73,7 +73,6 @@ router.post("/register", checkNotAuthenticated, async (req, res) => {
   // 10-12 rounds because it will be almost impossible to reverse engineer
   const salt = bcrypt.genSaltSync(10);
   const hashedPassword = await bcrypt.hashSync(req.body.password, salt);
-
   const first_name = req.body.first_name;
   const last_name = req.body.last_name;
   const email = req.body.email;
@@ -103,6 +102,22 @@ router.post("/logout", function (req, res, next) {
   });
 });
 
+// Auth User TODO
+// const user = con.model("users", userschema);
+
+// router.user(passport.initialize());
+// router.use(passport.session());
+
+// passport.serializeUser(function (user, done) {
+//   done(null, user.id);
+// });
+
+// passport.deserializeUser((id, done) => {
+//   user.findById(id, function (err, user) {
+//     return done(err, user);
+//   });
+// });
+
 // call user by email and return user already with account
 
 // login user (authenticating user data from db)
@@ -113,6 +128,10 @@ async function getUserByEmail(email) {
   return result;
 }
 
+// function getUserId() {
+//   const result = con.query("SELECT * FROM users WHERE ");
+// }
+
 // async function getUserById(user_id, email) {
 //   const result = await con
 //     .promise()
@@ -121,9 +140,11 @@ async function getUserByEmail(email) {
 //   console.log(result);
 // }
 
-// login user (authenticating user data from db)
+// FIX login user (authenticating user data from db)
 const initializePassport = require("./passport-config");
 initializePassport(passport, getUserByEmail);
+// const initializePassport = require("./passport ");
+// initializePassport(passport, getUserByEmail);
 
 // // TODO login for demo user
 // router.post("/login", async (req, res) => {
@@ -160,11 +181,16 @@ router.post("/add-ticket", async (req, res, done) => {
   // const hashedPassword = await bcrypt.hashSync(req.body.password, salt);
 
   const title = req.body.title;
+  console.log(title);
   const category = req.body.category;
+  console.log(category);
   const priority = req.body.priority;
+  console.log(priority);
   const description = req.body.description;
-  const user_id = 6;
+  console.log(description);
+  const user_id = 1;
   const date = new Date();
+  console.log(date);
   // const date = getDay(), '/',
   console.log(date);
 
@@ -199,7 +225,7 @@ router.use("/tickets", ticketRouter);
 // TODO FIX
 router.get("/", checkAuthenticated, async (req, res) => {
   const tickets = await getAllTickets();
-  console.log(tickets);
+  // console.log(tickets);
   res.render("index", { tickets: tickets[0] });
 });
 
@@ -207,3 +233,5 @@ async function getAllTickets() {
   const result = await con.promise().query("SELECT * FROM tickets");
   return result;
 }
+
+// TODO FIX verify passport sessions FIX TODO

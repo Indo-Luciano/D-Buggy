@@ -77,6 +77,7 @@ CREATE TABLE IF NOT EXISTS `d-buggy_db`.`users` (
   `user_id` INT NOT NULL AUTO_INCREMENT,
   `first_name` VARCHAR(50) NOT NULL,
   `last_name` VARCHAR(50) NOT NULL,
+  `password` VARCHAR(50) NOT NULL,
   `roll_roll_id` INT NOT NULL,
   `organization_organization_id` INT NOT NULL,
   PRIMARY KEY (`user_id`, `roll_roll_id`, `organization_organization_id`),
