@@ -30,7 +30,7 @@ router.use(passport.session());
 router.use(methodOverride("_method"));
 // router.use('/_add-ticket', ticketRouter)
 
-// Login / Register pages
+// Login Page
 router.get("/login", checkNotAuthenticated, (req, res) => {
   res.render("login.ejs");
 });
@@ -45,6 +45,7 @@ router.post(
   })
 );
 
+// Register Page
 router.get("/register", checkNotAuthenticated, (req, res) => {
   res.render("register.ejs");
 });
@@ -102,24 +103,6 @@ router.post("/logout", function (req, res, next) {
   });
 });
 
-// Auth User TODO
-// const user = con.model("users", userschema);
-
-// router.user(passport.initialize());
-// router.use(passport.session());
-
-// passport.serializeUser(function (user, done) {
-//   done(null, user.id);
-// });
-
-// passport.deserializeUser((id, done) => {
-//   user.findById(id, function (err, user) {
-//     return done(err, user);
-//   });
-// });
-
-// call user by email and return user already with account
-
 // login user (authenticating user data from db)
 async function getUserByEmail(email) {
   const result = await con
@@ -128,35 +111,13 @@ async function getUserByEmail(email) {
   return result;
 }
 
-// function getUserId() {
-//   const result = con.query("SELECT * FROM users WHERE ");
-// }
-
-// async function getUserById(user_id, email) {
-//   const result = await con
-//     .promise()
-//     .query("SELECT * FROM users WHERE user_id = ?", [user_id]);
-//   return result;
-//   console.log(result);
-// }
-
 // FIX login user (authenticating user data from db)
 const initializePassport = require("./passport-config");
 initializePassport(passport, getUserByEmail);
 // const initializePassport = require("./passport ");
 // initializePassport(passport, getUserByEmail);
 
-// // TODO login for demo user
-// router.post("/login", async (req, res) => {
-//   function demoLogin(email, password) {
-//     con.query(
-//       "SELECT * FROM users WHERE email === demo@user AND password === password"[
-//         (email, password)
-//       ]
-//     );
-//   }
-// });
-
+// Authentication
 function checkAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
     return next();
@@ -172,14 +133,9 @@ function checkNotAuthenticated(req, res, next) {
   next();
 }
 
-// TODO TODO TODO
-
-// Everything in ./routes/tickets is through /tickets
+// Add Tickets
 
 router.post("/add-ticket", async (req, res, done) => {
-  // const salt = bcrypt.genSaltSync(10);
-  // const hashedPassword = await bcrypt.hashSync(req.body.password, salt);
-
   const title = req.body.title;
   console.log(title);
   const category = req.body.category;
@@ -193,12 +149,6 @@ router.post("/add-ticket", async (req, res, done) => {
   console.log(date);
   // const date = getDay(), '/',
   console.log(date);
-
-  // TODO FIX
-  // const user = con.query("SELECT SESSION-USER_ID");
-  // console.log(user);
-
-  // console.log(user);
 
   con.query(
     "INSERT INTO tickets (title, description, date, category_category_id, users_user_id, priority_priority_id) VALUES (?,?,?,?,?,?)",
@@ -218,11 +168,7 @@ router.post("/add-ticket", async (req, res, done) => {
 
 router.use("/tickets", ticketRouter);
 
-// router.get("/add-ticket", (req, res) => {
-//   res.render("_add-ticket.ejs");
-// });
-
-// TODO FIX
+// TODO FIX Dashboard
 router.get("/", checkAuthenticated, async (req, res) => {
   const tickets = await getAllTickets();
   // console.log(tickets);
@@ -233,5 +179,3 @@ async function getAllTickets() {
   const result = await con.promise().query("SELECT * FROM tickets");
   return result;
 }
-
-// TODO FIX verify passport sessions FIX TODO
